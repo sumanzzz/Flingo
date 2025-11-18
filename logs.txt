@@ -1,0 +1,29 @@
+18/11/25 : Reegan Suman
+
+installed extensions for VS code
+    -> Extension pack for java
+    -> spring boot extension pack
+    -> lombok annotations support
+
+using spring initializer
+    -> create new Maven Project
+    -> Spring boot version : 3.5.7
+    -> language : java
+    -> Group Id : com.flingo
+    -> Artifact Id : flingo_b
+    -> package name : com.flingo.flingo_b
+    -> packaging type : jar
+    -> java version : 21
+
+    -> Select dependencies:
+        -> Spring web
+        -> Spring data JPA
+        -> lombok
+        -> PostgreSQL driver
+
+    -> setting NEON postgreSQL server
+        -> go to https://neon.com/
+        -> sign in 
+        -> configure project -> create
+        -> get connection details from the connectio string
+        -> update applications.properties with the url , password ,username provided in the connection string
