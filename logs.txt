@@ -38,3 +38,11 @@ using spring initializer
         -> created SharedTextRepository.java
             -> this is an interface that extends JpaRepository
             -> repository is used to communicate with database without using any SQL query
+
+        -> created SharedtextService.java
+            -> this class contains the buisness logic
+            -> creates a new ShareText object
+            -> Assigns content
+            -> generated a code of length 6
+            -> saves it to database via repository
+            -> returns the saved object

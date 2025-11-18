@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
-import lombok.Getter;
-import lombok.Setter;
 import jakarta.persistence.GenerationType;
 
 // getters and setters can be configured using Lombok instead of manually entering the get and set methods for each components
