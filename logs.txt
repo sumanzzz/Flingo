@@ -27,3 +27,10 @@ using spring initializer
         -> configure project -> create
         -> get connection details from the connectio string
         -> update applications.properties with the url , password ,username provided in the connection string
+
+    -> Started backend development
+        -> created SharedText.java
+            -> this is an Entity class and it represents table in our database
+            -> all the variables declared in this class corresponds to table columns in our database
+            -> when we run the application ,hibernate scans the entity class and converts them to SQL schema
+            -> this schema is then sent to neon using the connection string and thus creates the table in our database
