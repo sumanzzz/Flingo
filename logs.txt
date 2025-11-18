@@ -34,3 +34,7 @@ using spring initializer
             -> all the variables declared in this class corresponds to table columns in our database
             -> when we run the application ,hibernate scans the entity class and converts them to SQL schema
             -> this schema is then sent to neon using the connection string and thus creates the table in our database
+
+        -> created SharedTextRepository.java
+            -> this is an interface that extends JpaRepository
+            -> repository is used to communicate with database without using any SQL query
