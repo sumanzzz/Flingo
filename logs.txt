@@ -59,6 +59,8 @@ using spring initializer
 
                     returned a json file with id,code,content,created_at of the tuple with the above code --> successfull !
 
+18/11/25 : Prajwal (flingo_b)
+
 serving static files:
     ->go to src->main->resources->create a new folder called static->create a new file index.html
 
@@ -70,4 +72,34 @@ serving static files:
     
     ->refer index.html , style.css and app.js which are embedded with comments for understanding
 
+19/11/25 : Reegan Suman (flingo_b)
 
+-> started backend development for file sharing backend
+
+-> created SharedText.java
+    -> this is the entity class for file
+    -> when run , hibernate will create a new table with following attributes
+
+        -> id
+        -> code
+        -> originalFilename
+        -> storedFilename
+        -> contentType
+        -> size
+        -> path
+        -> createdAt
+
+-> created SharedFileRepository.java
+    -> same as SharedTextRepository
+
+-> created SharedFileService.java
+
+    -> gets the current working directory
+    -> adds a new upload direcotry to the CWD
+
+    -> creates a new storedName for the file with id+filename to avaid conflicts
+    -> saves the file in the repository
+
+-> created SharedFileController.java
+
+    -> same as SharedText.java but for files
