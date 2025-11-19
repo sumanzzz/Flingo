@@ -1,0 +1,73 @@
+18/11/25 : Reegan Suman (flingo_b)
+
+installed extensions for VS code
+    -> Extension pack for java
+    -> spring boot extension pack
+    -> lombok annotations support
+
+using spring initializer
+    -> create new Maven Project
+    -> Spring boot version : 3.5.7
+    -> language : java
+    -> Group Id : com.flingo
+    -> Artifact Id : flingo_b
+    -> package name : com.flingo.flingo_b
+    -> packaging type : jar
+    -> java version : 21
+
+    -> Select dependencies:
+        -> Spring web
+        -> Spring data JPA
+        -> lombok
+        -> PostgreSQL driver
+
+    -> setting NEON postgreSQL server
+        -> go to https://neon.com/
+        -> sign in 
+        -> configure project -> create
+        -> get connection details from the connectio string
+        -> update applications.properties with the url , password ,username provided in the connection string
+
+    -> Started backend development
+        -> created SharedText.java
+            -> this is an Entity class and it represents table in our database
+            -> all the variables declared in this class corresponds to table columns in our database
+            -> when we run the application ,hibernate scans the entity class and converts them to SQL schema
+            -> this schema is then sent to neon using the connection string and thus creates the table in our database
+
+        -> created SharedTextRepository.java
+            -> this is an interface that extends JpaRepository
+            -> repository is used to communicate with database without using any SQL query
+
+        -> created SharedtextService.java
+            -> this class contains the buisness logic
+            -> creates a new ShareText object
+            -> Assigns content
+            -> generated a code of length 6
+            -> saves it to database via repository
+            -> returns the saved object
+
+        -> created ServiceTestController.java (possible deprication)
+            -> used to test whether service works
+            -> following api endpoints were hit:
+
+                -> http://localhost:8081/test-save?text=hello
+
+                    returned a json file with all id,code,content,created_at --> sucessfull !
+                
+                -> http://localhost:8081/test-get?code=YY0Q2G
+
+                    returned a json file with id,code,content,created_at of the tuple with the above code --> successfull !
+
+serving static files:
+    ->go to src->main->resources->create a new folder called static->create a new file index.html
+
+    ->inside the static folder create two new folders one for css and another one for js
+
+    ->add html , css and js file this is serverd at the default of th localhost:8081/
+
+    ->by default static file index.html will get loaded(Welcome file)
+    
+    ->refer index.html , style.css and app.js which are embedded with comments for understanding
+
+

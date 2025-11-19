@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLINGO - Instant Text Sharing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="logo">FLINGO</h1>
+                <p class="tagline">Fling text content, instantly, across all devices.</p>
+            </header>
+
+            <!-- Tabs: Send and Receive -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="send">
+                    <i class="fas fa-paper-plane"></i> Send
+                </button>
+                <button class="tab-btn" data-tab="receive">
+                    <i class="fas fa-download"></i> Receive
+                </button>
+            </div>
+
+            <!-- Send Tab Content -->
+            <div class="tab-content active" id="sendTab">
+                <!-- Text Input Area -->
+                <div class="input-section">
+                    <textarea 
+                        id="textInput" 
+                        placeholder="Type or paste text/links here..."
+                        rows="8"
+                    ></textarea>
+                </div>
+
+                <!-- Character Counter -->
+                <div class="char-counter">
+                    <span id="charCount">0</span> characters
+                </div>
+
+                <!-- Submit Button -->
+                <button class="submit-btn" id="submitBtn">
+                    <i class="fas fa-share"></i> Generate Share Code
+                </button>
+
+                <!-- Result Section -->
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <div class="share-code-display">
+                        <h3>Your Share Code:</h3>
+                        <div class="code-box">
+                            <span id="shareCode">ABC123</span>
+                            <button class="copy-btn" id="copyBtn">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="qr-code" id="qrCode">
+                            <!-- QR code will be generated here -->
+                        </div>
+                        <p class="share-info">Share this code with anyone to access your content</p>
+                        <button class="new-share-btn" id="newShareBtn">
+                            <i class="fas fa-plus"></i> Share Another
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receive Tab Content -->
+            <div class="tab-content" id="receiveTab">
+                <div class="receive-section">
+                    <h2>Enter Share Code</h2>
+                    <div class="code-input-wrapper">
+                        <input 
+                            type="text" 
+                            id="receiveCode" 
+                            placeholder="Enter 6-digit code"
+                            maxlength="6"
+                        >
+                        <button class="receive-btn" id="receiveBtn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Content Display Area -->
+                    <div class="content-display" id="contentDisplay" style="display: none;">
+                        <div class="content-header">
+                            <h3>Received Content:</h3>
+                            <div class="content-actions">
+                                <button class="action-btn" id="copyContentBtn" title="Copy to clipboard">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button class="action-btn" id="shareContentBtn" title="Share again">
+                                    <i class="fas fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="content-box" id="contentBox">
+                            <!-- Received content will be displayed here -->
+                        </div>
+                        <div class="content-meta">
+                            <small id="contentTimestamp"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Action successful!</span>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script> -->
+    <script src="js/app.js"></script>
+</body>
+</html>
