@@ -1,11 +1,9 @@
-// ========================================
-// FLINGO - Utility Functions
-// ========================================
-
+//(helper functions)utilities(toasts ,format size, fallback copy)
 import { CONFIG } from './config.js';
 import { elements } from './dom.js';
 
 // Format file size
+//converting the raw byte values into human readable form sizes
 export function formatFileSize(bytes) {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
@@ -24,7 +22,9 @@ export function showToast(message, type = 'success') {
     }, CONFIG.TOAST_DURATION);
 }
 
-// Fallback copy method (works on HTTP)
+
+//clipboard backup 
+//else we used navigator.clipboard.writeText(), but tht would just paste our link 
 export function fallbackCopy(text, buttonElement) {
     const textArea = document.createElement('textarea');
     textArea.value = text;

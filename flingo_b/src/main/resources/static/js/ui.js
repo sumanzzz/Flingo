@@ -1,7 +1,4 @@
-// ========================================
-// FLINGO - UI Functions
-// ========================================
-
+//UI helper (like i need to switch tabs those things)
 import { elements } from './dom.js';
 import { showToast, fallbackCopy } from './utils.js';
 
@@ -24,10 +21,10 @@ export function updateCharCount() {
 // Copy share code
 export function copyShareCode() {
     const code = elements.shareCode.textContent;
-    
+//the below line checks for the support of clipboard 
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(code).then(() => {
-            showToast('Code copied to clipboard!', 'success');
+            showToast('Code copied to clipboard', 'success');
             elements.copyBtn.innerHTML = '<i class="fas fa-check"></i>';
             setTimeout(() => {
                 elements.copyBtn.innerHTML = '<i class="fas fa-copy"></i>';

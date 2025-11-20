@@ -4,10 +4,11 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
+//spring creates the shareTextService bean 
 public class ShareTextService {
 
     private final SharedTextRepository repo;
-
+//this method is called as constructor injection 
     public ShareTextService(SharedTextRepository repo){
         this.repo = repo;
     }

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 
 @RestController
+//so as soon as the the above line is hit spring creates a bean and maps /share-file and /file/{code}
 @CrossOrigin
 public class SharedFileController {
     
@@ -30,7 +31,6 @@ public class SharedFileController {
         return service.getByCode(code);
     }
     
-    // ===== ADD THIS NEW METHOD =====
     @GetMapping("/download/{code}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String code) {
         try {

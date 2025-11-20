@@ -42,7 +42,7 @@ public class SharedFileService {
     File dest = new File(uploadPath);
     file.transferTo(dest);
 
-    // Save metadata to DB
+    //save this meta data to the db
     SharedFile sf = new SharedFile();
     sf.setOriginalFilename(file.getOriginalFilename());
     sf.setStoredFilename(storedName);

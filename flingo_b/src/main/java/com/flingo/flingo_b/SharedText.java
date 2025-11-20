@@ -3,12 +3,12 @@ package com.flingo.flingo_b;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import jakarta.annotation.Generated;
+import jakarta.annotation.Generated;//can remove this
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GeneratedValue;//this too
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.GenerationType;//this too , bcs we r using pre persistent 
 
 // getters and setters can be configured using Lombok instead of manually entering the get and set methods for each components
 
@@ -18,12 +18,13 @@ import jakarta.persistence.GenerationType;
 //@Getter
 //@Setter
 @Entity
+//the above line tells the spring to create a table for this class in the database name of the table will be sharedtext
 public class SharedText {
     @Id
    
-
+//@Id says tht it is the PK
     private String id;
-
+//so this id is PK
     private String code;
 
     private String content;
@@ -31,6 +32,7 @@ public class SharedText {
     private LocalDateTime createdAt;
 
     @PrePersist
+// before saving info to db/table once need to run the below method
     public void prePersist(){
         if(this.id == null) {
             this.id = UUID.randomUUID().toString();

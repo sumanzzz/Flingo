@@ -1,6 +1,3 @@
-// ========================================
-// FLINGO - Upload Functions
-// ========================================
 
 import { CONFIG } from './config.js';
 import { elements } from './dom.js';
@@ -155,7 +152,6 @@ function displayShareCode(code) {
         colorDark: '#8b7bd8',
         colorLight: '#251f35'
     });
-    
     elements.resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 

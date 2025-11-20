@@ -11,3 +11,4 @@ public class FlingoBApplication {
 	}
 
 }
+// this is the entry point after this the code will search for the beans ie classes annoted with @RestController @service @Repository

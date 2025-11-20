@@ -1,7 +1,5 @@
-// ========================================
-// FLINGO - State Management
-// ========================================
-
+//small client state container
+//temp storage 
 export let currentReceivedContent = null;
 export let selectedFile = null;
 

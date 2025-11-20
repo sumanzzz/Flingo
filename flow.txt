@@ -1,0 +1,139 @@
+1)mvn spring-boot:run
+    ->when mvn spring-boot:run is ran then tht will invoke the FlingoBApplication.java
+    ->then it will look for the beans/annotations 
+    Extra Note:
+
+    @Enity=telling hibernate to create a table for this class
+    @service=tell spring this is a service bean
+    @RestController=this is a database interface
+    @Repository=this is a database interface
+    @springBootApplication=this is the main app
+
+    Annotations why do they exist?
+    ->before they used XML(complicated) 
+    ->now user @service 
+    ->class Myservice{}
+    ->above two lines , spring sees it creates and manages it 
+    ->all by own
+
+2)Beans creation
+    ->As soon as the main class ran it tells spring to find beans in tht package 
+    ->So it goes to SharedFileController.java bcs there the @RestController is present and then it will create a bean for tht annotations
+    ->and then it will map those /share-file , /file/{code}
+    ->next it sees tht @service in the ShareTextService.java and a buisness logic bean is created
+    ->next goes to SharedTextRepository and it will create tht @repository bean
+    ->next goes to sharedText.java and creates a bean for @Entity which here we use the Hibernate for ORM and the hibernate automaticcaly creates a sql table(@enity is the representation of DB table)
+
+3)SharedText.java
+    ->Explained in tht file itself
+    
+4)sharedTextRepository.java
+    ->this is the DAO(data access model like we used for our jsf lab exp)
+    ->interface telling JPA to give DAO for sharedText with string as the package
+    ->spring itself implemets this
+    ->spring has this inbuilt findByCode(String code) which is converted by the spring to SELECT... WHERE Code=? query automatically and willl return tht Optional<SharedText>
+    ->JPA has inbuilt DB queries like save(entity),findById(id),findAll(),delete(entity),count()
+    ->these are ready made DB queries
+    -> inside <sharedText,String> this is the generic parameter 
+    ->sharedText is entity class ,string is the type of PK
+    ->when shareTextService calls (@service) injects this repository when u call tht save()
+    =>refer the front to backend flow and tht file also
+
+5)shareTextService.java
+    ->@service tells spring tht this is the service bean , spring creates one instance and makes it available to other parts (controllers)
+    ->this has reference to the sharedTextRepository
+    ->so it can retrieve the shared text objects from the data
+
+6)ServiceTestController.java
+    servie is called for HTTP
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#file sharing
+
+7)SharedFile.java
+    ->for model 
+
+8)sharedFileRepository
+
+
+9)sharedFileService
+
+
+10)sharedFileController.java
+//similar to text just file logic and syntax is different
+
+##################################################################################################################################################################################################
+##########################################################################################################################################################################################################
+Frontend 
+    1)Index.html
+        ->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+glossary
+1)Beans
+2)Annotations
+3)DAO
+4)Hibernate
+5)Interface
+6)Genric parameters
+7)Constructor injector
+
+1)front to backend
+    =>user submits from frontend(eg:/test-save?text=hello)
+    =>controller recieves it ie serviceTestController(uses testSave() ) and this will return service.saveText(text);
+    =>the controller actually called tht service
+    =>Servce handles the buisness logic
+    =>now in this u called tht repo.save()
+    =>so repository is called 
+    =>but the repo.save() will trigger the hibernate and will serach for @Entity which is in tht sharedText.java
+    =>means it must be mapped to a DB table
+    =>now u call tht pre persistent method(explained earlier)
+    =>hibernate will convert all tht save() to sql for u
+
+#Flow 2
+Frontend -> (HTTP GET /test-save?text=hello) -> ServiceTestController.testSave() 
+    -> ShareTextService.saveText("hello")
+        -> generateCode() -> create SharedText -> repo.save(st)
+            -> Hibernate @PrePersist fills id/createdAt -> SQL INSERT
+        <- saved SharedText returned to controller
+    <- controller returns JSON to frontend
+Frontend receives JSON with code & createdAt & id -> displays code and QR
+
+#flow 3
+    =>User selects file on frontend (upload.js)
+    =>JS builds FormData with the file and POSTs to /share-file.
+    =>Backend receives multipart request (SharedFileController.uploadFile)
+    =>Spring maps multipart to MultipartFile parameter.
+    =>Controller delegates to service (service.savFile(file))
+    =>Service writes bytes to disk and saves metadata to DB, returns metadata (including code).
+    =>Controller returns metadata JSON to frontend.
+    =>Frontend receives { code: "ABC123", originalFilename: "...", ... } and displays code + generates a QR linking to ?code=ABC123.
+    =>User or recipient enters or scans code
+    =>Frontend receive.js first hits /test-get?code=... to check for text; if not found, it tries /file/{code}.
+    =>If file metadata is found: frontend displays filename + size and a "Download" button.
+    =>When user clicks Download: frontend triggers downloadReceivedFile() which builds '/download/' + code and uses an anchor click to start the download. Browser requests /download/{code}.
+    =>Backend download endpoint streams the file back with correct headers so browser downloads it.

@@ -1,6 +1,3 @@
-// ========================================
-// FLINGO - Receive Functions
-// ========================================
 
 import { CONFIG } from './config.js';
 import { elements } from './dom.js';

@@ -1,27 +1,21 @@
-// ========================================
-// FLINGO - Main Application
-// ========================================
-
+//the js file starts from this file
 import { elements } from './dom.js';
+
+
 import { switchTab, copyShareCode } from './ui.js';
+
+
 import { 
-    updateCharCount, 
-    handleFileSelect, 
-    handleDragOver, 
-    handleDragLeave, 
-    handleFileDrop, 
-    clearFileSelectionHandler, 
-    handleSubmit, 
-    resetSendForm 
+    updateCharCount,handleFileSelect, handleDragOver, handleDragLeave, 
+    handleFileDrop,clearFileSelectionHandler, handleSubmit, resetSendForm 
 } from './upload.js';
+
+
 import { 
-    handleReceive, 
-    downloadReceivedFile, 
-    copyReceivedContent, 
-    shareReceivedContent 
+    handleReceive,downloadReceivedFile, copyReceivedContent, shareReceivedContent 
 } from './receive.js';
 
-// Check for code in URL
+//code is paaswd
 function checkForCodeInURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
@@ -67,7 +61,7 @@ function setupEventListeners() {
         if (e.key === 'Enter') handleReceive();
     });
     
-    // Auto-uppercase for receive code
+    //upper case
     elements.receiveCode.addEventListener('input', (e) => {
         e.target.value = e.target.value.toUpperCase();
     });
