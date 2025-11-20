@@ -430,6 +430,7 @@ body {
 .receive-btn {
     width: 100%;
     padding: 16px;
+    margin-top: 50px;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     border: none;
     border-radius: var(--radius);
@@ -542,6 +543,8 @@ body {
 
 .code-input-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
     margin-bottom: 30px;
 }
@@ -568,7 +571,7 @@ body {
 }
 
 .code-input-wrapper .receive-btn {
-    width: auto;
+    width: 50%;
     padding: 16px 30px;
 }
 
