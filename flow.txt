@@ -70,29 +70,6 @@ Frontend
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 glossary
 1)Beans
 2)Annotations
