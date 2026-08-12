@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getTextByCode, getFileByCode, getDownloadUrl } from '../services/api';
+import { getTextByCode, getFileByCode, getDownloadUrl } from '../services/api.ts';
 import { formatFileSize, copyToClipboard } from '../utils';
 import { SharedText, SharedFile } from '../types';
 import './ReceiveTab.css';
