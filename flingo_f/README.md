@@ -39,3 +39,4 @@ The API base URL can be configured in `src/config.ts`. By default, it uses an em
 - qrcode.react for QR code generation
 - Font Awesome for icons
 
+
